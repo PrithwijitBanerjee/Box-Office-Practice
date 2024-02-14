@@ -6,12 +6,12 @@ import ActorGrid from "../components/actors/ActorGrid";
 import { useQuery } from '@tanstack/react-query'
 import { useSearchStr } from "../lib/useSearchStr";
 import { TextCenter } from '../components/commons/TextCenter'
-import { Hourglass } from "react-loader-spinner"
+import { Vortex } from "react-loader-spinner"
 const Home = () => {
   const [searchStr, setSearchStr] = useSearchStr();
   const [option, setOption] = useState('shows');
   const [filter, setFilter] = useState(null);
-  const { data: apiRes, error: apiErr, isLoading: loading } = useQuery({
+  const { data: apiRes, error: apiErr, isLoading } = useQuery({
     queryKey: ['search', filter],
     queryFn: () => (filter?.option === 'shows') ? searchForShows(filter?.searchStr) : searchForPeople(filter?.searchStr),
     // ⬇️ disabled as long as the filter is empty
@@ -36,16 +36,16 @@ const Home = () => {
       return <> Something Went Wrong! {apiErr?.message}</>
     }
 
-    if (loading) {
+    if (isLoading) {
       return <TextCenter>
-        <Hourglass
+        <Vortex
           visible={true}
           height="80"
           width="80"
-          ariaLabel="hourglass-loading"
+          ariaLabel="vortex-loading"
           wrapperStyle={{}}
-          wrapperClass=""
-          colors={['#306cce', '#72a1ed']}
+          wrapperClass="vortex-wrapper"
+          colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
         />
       </TextCenter>
     }
