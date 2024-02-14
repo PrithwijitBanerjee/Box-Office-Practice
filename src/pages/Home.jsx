@@ -37,9 +37,6 @@ const Home = () => {
     }
 
     if (loading) {
-      return <TextCenter><h2>Loading...</h2></TextCenter>
-    }
-    if (apiRes && apiRes?.length === 0) {
       return <TextCenter>
         <Hourglass
           visible={true}
@@ -51,6 +48,9 @@ const Home = () => {
           colors={['#306cce', '#72a1ed']}
         />
       </TextCenter>
+    }
+    if (apiRes && apiRes?.length === 0) {
+      return <TextCenter> <h2>No results found...</h2></TextCenter>
     }
     return (<>
       {
