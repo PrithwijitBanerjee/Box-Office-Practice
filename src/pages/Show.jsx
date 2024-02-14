@@ -8,6 +8,7 @@ import Seasons from '../components/shows/Seasons';
 import Cast from '../components/shows/Cast';
 import styled from 'styled-components';
 import { TextCenter } from '../components/commons/TextCenter';
+import NotFoundImg from "../lib/not-found-img.png"
 const Show = () => {
   const { showId } = useParams();
   const { data: showData, error: showErr, isLoading: loading } = useQuery({
@@ -31,7 +32,7 @@ const Show = () => {
               <Link to='/'>Go Back To Home</Link>
             </BackHomeWrapper>
             <ShowMainData
-              image={!!showData?.image ? showData?.image?.original : '/not-found-img.png'}
+              image={!!showData?.image ? showData?.image?.original : NotFoundImg}
               name={showData?.name}
               ratings={showData?.rating}
               genres={showData?.genres}
