@@ -9,6 +9,7 @@ import Cast from '../components/shows/Cast';
 import styled from 'styled-components';
 import { TextCenter } from '../components/commons/TextCenter';
 import NotFoundImg from "../lib/not-found-img.png"
+import { Hourglass } from 'react-loader-spinner';
 const Show = () => {
   const { showId } = useParams();
   const { data: showData, error: showErr, isLoading: loading } = useQuery({
@@ -21,7 +22,17 @@ const Show = () => {
   }
 
   if (loading) {
-    return <TextCenter><h2>Loading</h2></TextCenter>
+    return <TextCenter>
+      <Hourglass
+        visible={true}
+        height="80"
+        width="80"
+        ariaLabel="hourglass-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        colors={['#306cce', '#72a1ed']}
+      />
+    </TextCenter>
   }
   return (
     <ShowPageWrapper>

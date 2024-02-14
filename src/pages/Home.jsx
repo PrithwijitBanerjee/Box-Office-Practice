@@ -5,7 +5,8 @@ import ShowGrid from "../components/shows/ShowGrid";
 import ActorGrid from "../components/actors/ActorGrid";
 import { useQuery } from '@tanstack/react-query'
 import { useSearchStr } from "../lib/useSearchStr";
-import {TextCenter} from '../components/commons/TextCenter'
+import { TextCenter } from '../components/commons/TextCenter'
+import { Hourglass } from "react-loader-spinner"
 const Home = () => {
   const [searchStr, setSearchStr] = useSearchStr();
   const [option, setOption] = useState('shows');
@@ -39,7 +40,17 @@ const Home = () => {
       return <TextCenter><h2>Loading...</h2></TextCenter>
     }
     if (apiRes && apiRes?.length === 0) {
-      return <TextCenter> <h2>No results found...</h2></TextCenter>
+      return <TextCenter>
+        <Hourglass
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="hourglass-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          colors={['#306cce', '#72a1ed']}
+        />
+      </TextCenter>
     }
     return (<>
       {
