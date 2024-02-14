@@ -4,7 +4,7 @@ import styled from "styled-components";
 const AppTitle = ({title,subTitle}) => {
   return (
         <TitleWrapper>
-            <h1>{title}</h1>
+            <h2>{title}</h2>
             <p>{subTitle}</p>
         </TitleWrapper>
   )
